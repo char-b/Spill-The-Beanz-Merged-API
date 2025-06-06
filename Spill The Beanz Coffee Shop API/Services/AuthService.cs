@@ -23,13 +23,13 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Services
 
         public async Task<bool> RegisterCustomerAsync(RegisterCustomerDto dto)
         {
-            if (await _context.Customers.AnyAsync(c => c.Email == dto.Email))
+            if (await _context.Customers.AnyAsync(c => c.CustomerEmail == dto.CustomerEmail))
                 return false;
 
             var customer = new Customers
             {
                 CustomerName = dto.CustomerName,
-                Email = dto.Email,
+                CustomerEmail = dto.CustomerEmail,
                 PhoneNumber = dto.PhoneNumber,
                 Address = dto.Address,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
@@ -44,7 +44,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Services
 
         public async Task<string?> LoginAsync(LoginDto dto)
         {
-            var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Email == dto.Email);
+            var customer = await _context.Customers.FirstOrDefaultAsync(c => c.CustomerEmail == dto.Email);
             if (customer == null || !BCrypt.Net.BCrypt.Verify(dto.Password, customer.PasswordHash))
                 return null;
 
@@ -59,7 +59,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Services
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, customer.CustomerID.ToString()),
-                new Claim(ClaimTypes.Email, customer.Email)
+                new Claim(ClaimTypes.Email, customer.CustomerEmail)
             };
 
             var token = new JwtSecurityToken(

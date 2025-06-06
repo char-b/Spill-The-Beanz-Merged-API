@@ -8,8 +8,8 @@ namespace Spill_The_Beanz_Coffee_Shop_API.DTOs
     {      
         public int TableId { get; set; }
         public DateOnly ReservationDate { get; set; }
-        public TimeOnly StartTime { get; set; }
-        public TimeOnly EndTime { get; set; }
+          public TimeOnly StartTime { get; set; }
+         public TimeOnly EndTime { get; set; }
         public int PartySize { get; set; }
         public string? SpecialRequests { get; set; }
         public string ReservationStatus { get; set; }

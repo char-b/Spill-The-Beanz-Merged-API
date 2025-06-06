@@ -34,7 +34,17 @@ namespace Spill_The_Beanz_Coffee_Shop_API.DB_Context
 
 
             base.OnModelCreating(modelBuilder);
-      
+
+            modelBuilder.Entity<TableReservations>()
+                .HasOne(c => c.Customers)
+                .WithMany(m => m.TableReservations)
+                .HasForeignKey(c => c.CustomerEmail)
+                .HasConstraintName("FK_TableReservations_Customers")
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+            base.OnModelCreating(modelBuilder);
+
 
         }
     }

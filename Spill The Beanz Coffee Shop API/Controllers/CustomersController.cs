@@ -41,7 +41,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
             var dto = customers.Select(customers => new CustomerDTOGet() //Selects all the rows, goes through each one, and maps each one (object) to the DTO. >= maps. select(parameter name)
             {
                 CustomerName = customers.CustomerName,
-                Email = customers.Email,
+                Email = customers.CustomerEmail,
                 PhoneNumber = customers.PhoneNumber,
                 Address = customers.Address
             }).ToList(); //turns objexts into a new list
@@ -65,7 +65,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
             var dto = new CustomerDTOGet
             {
                 CustomerName = customers.CustomerName,
-                Email = customers.Email,
+                Email = customers.CustomerEmail,
                 PhoneNumber = customers.PhoneNumber,
                 Address = customers.Address
             };
@@ -94,7 +94,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
             var customerToPatch = new CustomerDTOP
             {
                 CustomerName = customer.CustomerName,
-                Email = customer.Email,
+                Email = customer.CustomerEmail,
                 PhoneNumber = customer.PhoneNumber,
                 PasswordHash = customer.PasswordHash,
                 Address = customer.Address
@@ -108,7 +108,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
             }
             //updating kinda
             customer.CustomerName = customerToPatch.CustomerName; //so whatever 'patched' value we get, we update?
-            customer.Email = customerToPatch.Email;
+            customer.CustomerEmail = customerToPatch.Email;
             customer.PhoneNumber = customerToPatch.PhoneNumber;
             customer.Address = customerToPatch.Address;
             customer.LastVisited = DateTime.UtcNow; //Not in the DTO but, we are now updating the last visted since that's the case? might leave after this? what for? profile visit?

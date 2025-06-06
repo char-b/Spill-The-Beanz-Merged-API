@@ -10,7 +10,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Models
         public int ReservationId { get; set; }
 
         [Column("customer_id")]
-        public int CustomerId { get; set; }
+        public int CustomerEmail { get; set; }
 
         [Column("table_id")]
         public int TableId { get; set; }

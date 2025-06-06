@@ -14,7 +14,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Models
         public string CustomerName { get; set; }
 
         [Column("email")]
-        public string Email { get; set; }
+        public string CustomerEmail { get; set; }
 
         [Column("phone_number")]
         public string PhoneNumber { get; set; }

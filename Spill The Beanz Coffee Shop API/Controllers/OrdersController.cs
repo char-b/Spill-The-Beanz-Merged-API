@@ -37,7 +37,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
                 {
                     OrderId = order.OrderId,
                     CustomerName = order.Customer.CustomerName,
-                    Email = order.Customer.Email,
+                    Email = order.Customer.CustomerEmail,
                     PhoneNumber = order.Customer.PhoneNumber,
                     Address = order.Customer.Address,
                     Orders = new List<OrderDto>
@@ -77,7 +77,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
                 {
                     OrderId = order.OrderId,
                     CustomerName = order.Customer.CustomerName,
-                    Email = order.Customer.Email,
+                    Email = order.Customer.CustomerEmail,
                     PhoneNumber = order.Customer.PhoneNumber,
                     Address = order.Customer.Address,
                     Orders = new List<OrderDto>

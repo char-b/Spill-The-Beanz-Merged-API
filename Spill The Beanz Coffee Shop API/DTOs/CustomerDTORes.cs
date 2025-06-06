@@ -8,7 +8,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.DTOs
 
         //Customer information 
         public string CustomerName { get; set; }
-        public string Email { get; set; }
+        public string CustomerEmail { get; set; }
         public string PhoneNumber { get; set; }
         //One customer can have many table reservations. This links to the DTO so we only receive certain information. 
         public List<TableResDTO> TableReservations { get; set; }

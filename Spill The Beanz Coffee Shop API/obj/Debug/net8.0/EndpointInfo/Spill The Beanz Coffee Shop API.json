@@ -5,114 +5,6 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Auth/register": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterDto"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Auth/admin/login": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDto"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Auth/customer/login": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDto"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Customers": {
       "get": {
         "tags": [
@@ -585,22 +477,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/TableResDTO"
+                "$ref": "#/components/schemas/TableResDTOPatch"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TableResDTO"
+                "$ref": "#/components/schemas/TableResDTOPatch"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TableResDTO"
+                "$ref": "#/components/schemas/TableResDTOPatch"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TableResDTO"
+                "$ref": "#/components/schemas/TableResDTOPatch"
               }
             }
           }
@@ -676,7 +568,7 @@
             "type": "string",
             "format": "date-time"
           },
-          "lastVogin": {
+          "lastLogin": {
             "type": "string",
             "format": "date-time",
             "nullable": true
@@ -764,7 +656,7 @@
             "type": "string",
             "nullable": true
           },
-          "email": {
+          "customerEmail": {
             "type": "string",
             "nullable": true
           },
@@ -829,7 +721,7 @@
             "type": "string",
             "nullable": true
           },
-          "email": {
+          "customerEmail": {
             "type": "string",
             "nullable": true
           },
@@ -888,20 +780,6 @@
         },
         "additionalProperties": false
       },
-      "LoginDto": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "Menu": {
         "type": "object",
         "properties": {
@@ -951,13 +829,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/OrderItems"
-            },
-            "nullable": true
-          },
-          "promotionMenus": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PromotionMenu"
             },
             "nullable": true
           },
@@ -1214,26 +1085,6 @@
         },
         "additionalProperties": false
       },
-      "PromotionMenu": {
-        "type": "object",
-        "properties": {
-          "promotionId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "promotion": {
-            "$ref": "#/components/schemas/Promotions"
-          },
-          "menuId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "menu": {
-            "$ref": "#/components/schemas/Menu"
-          }
-        },
-        "additionalProperties": false
-      },
       "Promotions": {
         "type": "object",
         "properties": {
@@ -1298,39 +1149,6 @@
               "$ref": "#/components/schemas/Admin"
             },
             "nullable": true
-          },
-          "promotionMenus": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PromotionMenu"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "RegisterDto": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "address": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1369,6 +1187,20 @@
         },
         "additionalProperties": false
       },
+      "TableResDTOPatch": {
+        "type": "object",
+        "properties": {
+          "tableId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reservationStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "TableReservations": {
         "type": "object",
         "properties": {
@@ -1376,7 +1208,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "customerId": {
+          "customerEmail": {
             "type": "integer",
             "format": "int32"
           },
@@ -1434,6 +1266,10 @@
           "tableId": {
             "type": "integer",
             "format": "int32"
+          },
+          "tableNumber": {
+            "type": "string",
+            "nullable": true
           },
           "tableAvailability": {
             "type": "boolean"

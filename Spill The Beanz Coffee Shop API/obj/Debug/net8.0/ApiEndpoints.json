@@ -1,53 +1,5 @@
 [
   {
-    "ContainingType": "Spill_The_Beanz_Coffee_Shop_API.Controllers.AuthController",
-    "Method": "AdminLogin",
-    "RelativePath": "api/Auth/admin/login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "Spill_The_Beanz_Coffee_Shop_API.Controllers.AuthController\u002BLoginDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Spill_The_Beanz_Coffee_Shop_API.Controllers.AuthController",
-    "Method": "CustomerLogin",
-    "RelativePath": "api/Auth/customer/login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "Spill_The_Beanz_Coffee_Shop_API.Controllers.AuthController\u002BLoginDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Spill_The_Beanz_Coffee_Shop_API.Controllers.AuthController",
-    "Method": "Register",
-    "RelativePath": "api/Auth/register",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "Spill_The_Beanz_Coffee_Shop_API.Controllers.AuthController\u002BRegisterDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Spill_The_Beanz_Coffee_Shop_API.Controllers.CustomersController",
     "Method": "GetCustomerList",
     "RelativePath": "api/Customers",
@@ -310,7 +262,7 @@
       },
       {
         "Name": "updateStatus",
-        "Type": "Spill_The_Beanz_Coffee_Shop_API.DTOs.TableResDTO",
+        "Type": "Spill_The_Beanz_Coffee_Shop_API.DTOs.TableResDTOPatch",
         "IsRequired": true
       }
     ],

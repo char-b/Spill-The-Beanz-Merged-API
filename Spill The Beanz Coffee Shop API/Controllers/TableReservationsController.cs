@@ -38,7 +38,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
             { //create new DTO object of customer. so only certain data is seen. 
                 ReservationId = customerRes.ReservationId,
                 CustomerName = customerRes.Customers.CustomerName,
-                Email = customerRes.Customers.Email,
+                CustomerEmail = customerRes.Customers.CustomerEmail,
                 PhoneNumber = customerRes.Customers.CustomerName,
                 TableReservations = new List<TableResDTO>
                 { new TableResDTO
@@ -60,7 +60,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
     
 
         [HttpPatch("{id}")]
-        public async Task<ActionResult<TableReservations>>PatchTableReservationStatus(int id, [FromBody]TableResDTO updateStatus) //you patch the DTO but you're returning back to the model
+        public async Task<ActionResult<TableReservations>>PatchTableReservationStatus(int id, [FromBody] TableResDTOPatch updateStatus) //you patch the DTO but you're returning back to the model
         {
             if (updateStatus == null)
             {
@@ -75,7 +75,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
             }
             //do i only 'copy' the one value i want to change?
 
-            var reservationStatus = new TableResDTO //now we assign the current value from the MODEL to the value of the DTO
+            var reservationStatus = new TableResDTOPatch //now we assign the current value from the MODEL to the value of the DTO
             {
                 ReservationStatus = updateStatus.ReservationStatus
             };
