@@ -2,10 +2,16 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Spill_The_Beanz_Coffee_Shop_API.DB_Context;
+using Spill_The_Beanz_Coffee_Shop_API.Services;
 using System.Text;
 using System.Text.Json.Serialization;
+using System.IO;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Register DbContext with SQL Server connection string from appsettings.json
 builder.Services.AddDbContext<CoffeeDbContext>(opt =>
@@ -57,6 +63,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGenNewtonsoftSupport();
 
 var app = builder.Build();
+
+ /* AdminService.CreateAdmin();*/ //this is for admin passwords
+
 
 // Use CORS policy
 app.UseCors("AllowAll");

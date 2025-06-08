@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Spill The Beanz Coffee Shop API.props" />
+</Project>

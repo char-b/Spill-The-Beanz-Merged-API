@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Spill_The_Beanz_Coffee_Shop_API.DB_Context;
-using Spill_The_Beanz_Coffee_Shop_API.DTOs; // Create this if you haven’t yet
+using Spill_The_Beanz_Coffee_Shop_API.DTOs; // THIS IS REDUNDANT IGNORE THIS CLASS FOR NOW
 using Spill_The_Beanz_Coffee_Shop_API.Models;
 
 namespace Spill_The_Beanz_Coffee_Shop_API.Services

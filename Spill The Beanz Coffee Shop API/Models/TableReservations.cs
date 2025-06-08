@@ -9,8 +9,8 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Models
         [Column("reservation_id")]
         public int ReservationId { get; set; }
 
-        [Column("customer_id")]
-        public int CustomerEmail { get; set; }
+        [Column("customer_email")]
+        public string CustomerEmail { get; set; }
 
         [Column("table_id")]
         public int TableId { get; set; }
@@ -37,7 +37,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Models
         public DateTime createdAt { get; set; }
 
         //Many table reservations can be made by many customers
-        [ForeignKey("CustomerId")] //this can reference email (UNIQUE)
+        [ForeignKey("CustomerEmail")] //this can reference email (UNIQUE)
         public virtual Customers Customers { get; set; } = null!;
         public virtual ICollection<Orders> Orders { get; set; } = new List<Orders>();
 

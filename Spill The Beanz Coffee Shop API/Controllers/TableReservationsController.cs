@@ -39,7 +39,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
                 ReservationId = customerRes.ReservationId,
                 CustomerName = customerRes.Customers.CustomerName,
                 CustomerEmail = customerRes.Customers.CustomerEmail,
-                PhoneNumber = customerRes.Customers.CustomerName,
+                PhoneNumber = customerRes.Customers.PhoneNumber, //Previously I was fetching CustomerName rather than phone number lol
                 TableReservations = new List<TableResDTO>
                 { new TableResDTO
                 {

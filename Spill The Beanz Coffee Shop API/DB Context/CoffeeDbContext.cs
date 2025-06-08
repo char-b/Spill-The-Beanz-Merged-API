@@ -42,6 +42,16 @@ namespace Spill_The_Beanz_Coffee_Shop_API.DB_Context
                 .HasConstraintName("FK_TableReservations_Customers")
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Customers>()
+            .HasAlternateKey(c => c.CustomerEmail); // tells EF it's unique and can be a principal key
+
+            modelBuilder.Entity<TableReservations>()
+            .HasOne(tr => tr.Customers)
+            .WithMany(c => c.TableReservations)
+            .HasForeignKey(tr => tr.CustomerEmail)
+            .HasPrincipalKey(c => c.CustomerEmail);
+
+
 
             base.OnModelCreating(modelBuilder);
 
