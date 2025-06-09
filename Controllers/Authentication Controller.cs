@@ -27,17 +27,6 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterDto model)
         {
 
-
-
-
-
-
-
-
-
-
-
-
             if (await _context.Customers.AnyAsync(c => c.Email == model.Email))
                 return BadRequest("Email is already registered.");
 
