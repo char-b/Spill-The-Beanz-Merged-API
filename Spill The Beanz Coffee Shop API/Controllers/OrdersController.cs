@@ -64,6 +64,40 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
 
         //POST Orders
 
+        [HttpPost]
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> CreateOrder([FromBody] CreateOrderDto orderDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            //this is to extract from the JWT token
+            var customerIdClaim = User.Claims.FirstOrDefault(c => c.Type == "CustomerId");
+            if (customerIdClaim == null) return Unauthorized("Customer ID not found in token.");
+
+            int customerId = int.Parse(customerIdClaim.Value);
+
+            var order = new Orders
+            {
+                CustomerId = customerId,
+                OrderDate = DateTime.UtcNow,
+                OrderType = orderDto.OrderType,
+                TotalAmount = orderDto.TotalAmount,
+                TaxAmount = orderDto.TaxAmount,
+                FinalAmount = orderDto.FinalAmount,
+                OrderStatus = "Received",                                            
+                OrderItems = orderDto.Items.Select(i => new OrderItems
+                {
+                    ItemId = i.ItemId,
+                   // UnitPrice = i.UnitPrice, not sure if this is meant to reference item.price
+                    Quantity = i.Quantity
+                }).ToList()
+            };
+
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetCustomerOrderById), new { id = order.OrderId }, order);
+        }
+
         // GET: api/Orders/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<CustomerDTOOrderGET>> GetCustomerOrderById(int id)

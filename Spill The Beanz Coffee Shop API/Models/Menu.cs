@@ -13,7 +13,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Models
         public string ItemName { get; set; }
 
         [Column("category")]
-        public string MenuCategory { get; set; }
+        public string Category { get; set; }
 
         [Column("description")]
         public string Description { get; set; }

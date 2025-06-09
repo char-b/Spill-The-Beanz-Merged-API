@@ -101,12 +101,12 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
             return Ok(new
             {
                 token,
-                customerId = customer.CustomerID,
+                //customerId = customer.CustomerID,
                 customerName = customer.CustomerName
             });
         }
 
-        private string GenerateJwtToken(int userId, string email, string role, string userName)
+        private string GenerateJwtToken(int userId, string email, string role, string customerName)
         {
             var jwtSettings = _configuration.GetSection("Jwt");
             var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]!);
@@ -117,15 +117,15 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                            new Claim("UserId", userId.ToString()),
+                            new Claim("CustomerId", userId.ToString()),
                             new Claim(ClaimTypes.Email, email),
                             new Claim(ClaimTypes.Role, role),
-                            new Claim(ClaimTypes.Name, userName)
+                            new Claim(ClaimTypes.Name, customerName)
                         }),
-                Expires = DateTime.UtcNow.AddMinutes(int.Parse(jwtSettings["ExpiresInMinutes"]!)),
-                Issuer = jwtSettings["Issuer"],
-                Audience = jwtSettings["Audience"],
-                SigningCredentials = new SigningCredentials(
+                    Expires = DateTime.UtcNow.AddMinutes(int.Parse(jwtSettings["ExpiresInMinutes"]!)),
+                    Issuer = jwtSettings["Issuer"],
+                    Audience = jwtSettings["Audience"],
+                    SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature
                 )

@@ -51,6 +51,13 @@ namespace Spill_The_Beanz_Coffee_Shop_API.DB_Context
             .HasForeignKey(tr => tr.CustomerEmail)
             .HasPrincipalKey(c => c.CustomerEmail);
 
+             modelBuilder.Entity<OrderItems>()
+            .HasOne(oi => oi.Item)
+            .WithMany(m => m.OrderItems)
+            .HasForeignKey(oi => oi.ItemId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+
 
 
             base.OnModelCreating(modelBuilder);

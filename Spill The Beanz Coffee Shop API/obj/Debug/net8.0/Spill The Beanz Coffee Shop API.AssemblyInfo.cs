@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Spill The Beanz Coffee Shop API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a569cde6ce59add9d1fa03c9872146701c2a97e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+887c436247d85b6e9426fd5854598023bc98e3ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("Spill The Beanz Coffee Shop API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Spill The Beanz Coffee Shop API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

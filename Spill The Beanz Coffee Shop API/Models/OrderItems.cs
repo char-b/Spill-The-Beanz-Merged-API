@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Spill_The_Beanz_Coffee_Shop_API.Models
 {
@@ -34,6 +35,8 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Models
         public decimal UnitPrice { get; set; }
 
         [ForeignKey("OrderId")]
+        [JsonIgnore] //There was a serialization/looping error that occured because of the OrderItem and Order relationship. These two ensure that is ignored so there's no error
+        [Newtonsoft.Json.JsonIgnore]
         public virtual Orders Order { get; set; } = null!;
     }
 }

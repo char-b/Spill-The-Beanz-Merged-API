@@ -36,7 +36,7 @@ namespace Spill_The_Beanz_Coffee_Shop_API.Controllers
             var menuItemsDto = menuItems.Select(menuItems => new MenuDTOGET()
             {
                 ItemId = menuItems.ItemId,
-                MenuCategory = menuItems.MenuCategory,
+                Category = menuItems.Category,
                 ItemName = menuItems.ItemName,
                 ImageUrl = menuItems.ImageUrl,
                 Description = menuItems.Description,

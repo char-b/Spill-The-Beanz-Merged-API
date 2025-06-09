@@ -6,6 +6,9 @@ using Spill_The_Beanz_Coffee_Shop_API.Services;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.IO;
+using Microsoft.Extensions.DependencyInjection;
+using Spill_The_Beanz_Coffee_Shop_API.Filter;
+using Microsoft.Extensions.FileProviders;
 
 
 
@@ -59,12 +62,47 @@ builder.Services.AddControllers()
 
 // Swagger/OpenAPI setup
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "Spill The Beanz API",
+        Version = "v1"
+    });
+
+    c.OperationFilter<FileUploadOperationFilter>();
+
+    c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Description = "Enter 'Bearer' followed by a space and your JWT token.\n\nExample: Bearer eyJhbGciOiJIUzI1NiIs..."
+    });
+
+    c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
+
 builder.Services.AddSwaggerGenNewtonsoftSupport();
 
 var app = builder.Build();
 
- /* AdminService.CreateAdmin();*/ //this is for admin passwords
+/* AdminService.CreateAdmin();*/ //this is for admin passwords
 
 
 // Use CORS policy
@@ -78,6 +116,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "Image Uploads")),
+    RequestPath = "/Image Uploads"
+});
 
 // IMPORTANT: Add authentication and authorization middleware in correct order
 app.UseAuthentication();
